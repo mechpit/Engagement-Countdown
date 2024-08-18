@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Countdown</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: url('your-image.jpg') no-repeat center center fixed;
+            background-size: contain;
+            padding: 50px;
+        }
+        .countdown {
+            font-size: 58px;
+            color: Dark Grey;
+            margin-top: 27%;
+        }
+		
+        .music-player {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Shona & Honey's Engagement Countdown!</h1>
+     <p class="wedding-date">September 20, 2024</p>
+    <p class="wedding-quote">"Together is a beautiful place to be."</p>
+    
+    <div class="countdown" id="countdown"></div>
+
+    <div class="music-player">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/5SKotVYCyEbrc2efbRMcsJ?utm_source=generator&theme=0" width="250" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>" 
+    </div>
+
+    <script>
+        // Set the date of your wedding
+        const weddingDate = new Date("Sep 20, 2024 10:00:00").getTime();
+		
+
+        // Update the countdown every second
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+			console.log("Current Date (in milliseconds):", now);
+
+            const distance = weddingDate - now;
+			console.log("Distance between now and wedding date (in milliseconds):", distance);
+
+
+            // Calculate days, hours, minutes, and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+            // If the countdown is finished
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "It's our wedding day!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
